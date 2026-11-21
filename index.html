@@ -37,6 +37,22 @@
     </div>
     <div class="gallery__grid" id="gallery-grid">
     </div>
+    <div class="gallery__dots" id="gallery-dots" aria-label="Indicadores de galería"></div>
+  </section>
+
+  <section id="memories" class="memories" aria-label="Cinta de recuerdos">
+    <div class="section__header">
+      <h2>Más de nosotros</h2>
+      <p>Veinte instantes que siguen latiendo</p>
+    </div>
+    <div class="memories__rows">
+      <div class="memories__marquee" data-direction="left">
+        <div class="memories__track" id="memories-track-top"></div>
+      </div>
+      <div class="memories__marquee" data-direction="right">
+        <div class="memories__track" id="memories-track-bottom"></div>
+      </div>
+    </div>
   </section>
 
   <section id="letter" class="letter">
@@ -79,6 +95,7 @@
     <div class="lightbox__content">
       <img src="" alt="" class="lightbox__image">
       <p class="lightbox__caption"></p>
+      <span class="lightbox__counter" aria-live="polite"></span>
     </div>
   </div>
 
