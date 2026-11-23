@@ -546,21 +546,21 @@ a {
   border-radius: 7px;
   background: linear-gradient(
     165deg,
-    #F3D4D4 0%,
-    var(--color-pastel-pink) 55%,
-    #E6B7B7 100%
+    #DBA19E 0%,
+    #CC8F8C 55%,
+    #BD7F7C 100%
   );
-  border: 1px solid rgba(201, 169, 110, 0.38);
+  border: 1px solid rgba(196, 149, 143, 0.55);
   box-shadow:
-    0 14px 34px rgba(60, 30, 20, 0.14),
-    0 3px 10px rgba(60, 30, 20, 0.08);
+    0 16px 38px rgba(122, 59, 59, 0.18),
+    0 4px 12px rgba(60, 30, 20, 0.08);
   transition: box-shadow 0.4s ease;
 }
 
 .envelope:hover .envelope__back {
   box-shadow:
-    0 22px 48px rgba(60, 30, 20, 0.18),
-    0 4px 12px rgba(201, 169, 110, 0.14);
+    0 24px 50px rgba(122, 59, 59, 0.24),
+    0 6px 16px rgba(201, 169, 110, 0.18);
 }
 
 .envelope__paper {
@@ -642,7 +642,7 @@ a {
   content: '';
   position: absolute;
   inset: 6px;
-  border: 1px solid rgba(201, 169, 110, 0.22);
+  border: 1px solid rgba(201, 169, 110, 0.42);
   border-radius: 4px;
   pointer-events: none;
 }
@@ -654,18 +654,18 @@ a {
 
 .envelope__fold--left {
   clip-path: polygon(0 0, 52% 52%, 0 100%);
-  background: linear-gradient(135deg, #FAF3EA 0%, #EFE2D3 100%);
+  background: linear-gradient(135deg, #F2CCCA 0%, #E4B2AF 100%);
 }
 
 .envelope__fold--right {
   clip-path: polygon(100% 0, 100% 100%, 48% 52%);
-  background: linear-gradient(225deg, #F8EFE4 0%, #ECDDCC 100%);
+  background: linear-gradient(225deg, #EEC4C1 0%, #DFA9A6 100%);
 }
 
 .envelope__fold--bottom {
   clip-path: polygon(0 100%, 50% 47%, 100% 100%);
-  background: linear-gradient(180deg, #F3E6D8 0%, #FCF6EE 100%);
-  filter: drop-shadow(0 -2px 5px rgba(60, 30, 20, 0.08));
+  background: linear-gradient(180deg, #E5B4B1 0%, #F4D2D0 100%);
+  filter: drop-shadow(0 -2px 5px rgba(122, 59, 59, 0.15));
 }
 
 .envelope__flap {
@@ -687,10 +687,10 @@ a {
   position: absolute;
   inset: 0;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
-  background: linear-gradient(180deg, #FBF5EC 0%, #F1E3D4 100%);
+  background: linear-gradient(180deg, #F7DBD9 0%, #E7B9B6 100%);
   border-top-left-radius: 7px;
   border-top-right-radius: 7px;
-  filter: drop-shadow(0 5px 8px rgba(60, 30, 20, 0.12));
+  filter: drop-shadow(0 5px 9px rgba(122, 59, 59, 0.16));
 }
 
 .envelope__flap::after {
@@ -698,7 +698,7 @@ a {
   position: absolute;
   inset: 0;
   clip-path: polygon(1.5% 0, 98.5% 0, 50% 96%);
-  border-top: 1px solid rgba(201, 169, 110, 0.35);
+  border-top: 1px solid rgba(201, 169, 110, 0.45);
   pointer-events: none;
 }
 
