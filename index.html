@@ -58,27 +58,54 @@
   <section id="letter" class="letter">
     <div class="section__header">
       <h2>Una carta para ti</h2>
-      <p>Dos mensajes que guarda mi corazón</p>
+      <p>Un mensaje que guarda mi corazón</p>
     </div>
-    <div class="letter__container">
-      <div class="letter-card">
-        <span class="letter__ornament" aria-hidden="true">&#x2726;</span>
-        <p class="letter__dropcap">Q</p>
-        <div class="letter__body">
-          <p>Entre recuerdos, sonrisas y pequeños momentos, descubrí que mi lugar favorito siempre será a tu lado...</p>
-        </div>
-        <div class="letter__divider" aria-hidden="true"></div>
-        <p class="letter__signature">— Con todo mi amor</p>
-      </div>
-      <div class="letter-card">
-        <span class="letter__ornament" aria-hidden="true">&#x2726;</span>
-        <p class="letter__dropcap">Q</p>
-        <div class="letter__body">
-          <p>No sé cuántas historias nos esperan, pero sé que quiero vivir cada una contigo.</p>
-        </div>
-        <div class="letter__divider" aria-hidden="true"></div>
-        <p class="letter__signature">— Siempre tú y yo</p>
-      </div>
+    <div class="envelope-stage">
+      <button
+        type="button"
+        class="envelope"
+        id="envelope-trigger"
+        aria-haspopup="dialog"
+        aria-controls="letter-modal"
+        aria-expanded="false"
+        aria-label="Abrir sobre para leer la carta"
+      >
+        <span class="envelope__shadow" aria-hidden="true"></span>
+        <span class="envelope__body" aria-hidden="true">
+          <span class="envelope__back"></span>
+          <span class="envelope__paper">
+            <span class="envelope__paper-ornament">&#x2726;</span>
+            <span class="envelope__paper-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </span>
+          <span class="envelope__front">
+            <span class="envelope__fold envelope__fold--left"></span>
+            <span class="envelope__fold envelope__fold--right"></span>
+            <span class="envelope__fold envelope__fold--bottom"></span>
+          </span>
+          <span class="envelope__flap"></span>
+          <span class="envelope__seal">
+            <span class="envelope__seal-ring"></span>
+            <svg class="envelope__seal-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+          </span>
+        </span>
+        <span class="envelope__particles" aria-hidden="true">
+          <span class="envelope__particle envelope__particle--gold" style="--tx: -86px; --ty: -118px; --rot: -18deg; --delay: 0.04s; --scale: 0.9;">&#x2726;</span>
+          <span class="envelope__particle envelope__particle--rose" style="--tx: -42px; --ty: -145px; --rot: 12deg; --delay: 0.12s; --scale: 1.05;">&#x2665;</span>
+          <span class="envelope__particle envelope__particle--gold" style="--tx: -12px; --ty: -130px; --rot: -8deg; --delay: 0.2s; --scale: 0.78;">&#x2726;</span>
+          <span class="envelope__particle envelope__particle--rose" style="--tx: 28px; --ty: -152px; --rot: 16deg; --delay: 0.08s; --scale: 0.95;">&#x2665;</span>
+          <span class="envelope__particle envelope__particle--gold" style="--tx: 68px; --ty: -124px; --rot: 22deg; --delay: 0.16s; --scale: 0.85;">&#x2726;</span>
+          <span class="envelope__particle envelope__particle--rose" style="--tx: 94px; --ty: -102px; --rot: -14deg; --delay: 0.24s; --scale: 0.75;">&#x2665;</span>
+          <span class="envelope__particle envelope__particle--gold" style="--tx: -64px; --ty: -92px; --rot: 24deg; --delay: 0.26s; --scale: 0.7;">&#x2726;</span>
+          <span class="envelope__particle envelope__particle--rose" style="--tx: 48px; --ty: -108px; --rot: -20deg; --delay: 0.18s; --scale: 0.82;">&#x2665;</span>
+        </span>
+      </button>
+      <p class="envelope__hint">Toca el sobre para abrirlo</p>
     </div>
   </section>
 
@@ -96,6 +123,27 @@
       <img src="" alt="" class="lightbox__image">
       <p class="lightbox__caption"></p>
       <span class="lightbox__counter" aria-live="polite"></span>
+    </div>
+  </div>
+
+  <div id="letter-modal" class="letter-modal" role="dialog" aria-modal="true" aria-labelledby="letter-modal-title" hidden>
+    <div class="letter-modal__paper">
+      <button type="button" class="letter-modal__close" aria-label="Cerrar carta">&times;</button>
+      <span class="letter-modal__ornament" aria-hidden="true">&#x2726;</span>
+      <h3 id="letter-modal-title" class="sr-only">Una carta para ti</h3>
+      <div class="letter-modal__body">
+        <p class="letter-modal__paragraph">
+          Te mereces todo lo bonito que existe en este mundo, y créeme que me encantaría ser <span class="letter-modal__emphasis">YO</span> quién te lo dé.
+        </p>
+        <p class="letter-modal__paragraph">
+          Quiero regalarte motivos para sonreír, abrazos que te hagan sentir en casa, palabras que te recuerden lo importante que eres y un amor que nunca te haga dudar. Quiero cuidarte, apoyarte en tus días difíciles y celebrar contigo cada logro, cada alegría; no prometo una historia perfecta, pero sí un corazón dispuesto a hacerte feliz.
+        </p>
+        <p class="letter-modal__paragraph">
+          Porque si la vida me permite compartir mis días contigo, quiero que nunca te falten razones para sentirte amada, valorada y profundamente especial.
+        </p>
+      </div>
+      <div class="letter-modal__divider" aria-hidden="true"></div>
+      <p class="letter-modal__signature">T. Q. M</p>
     </div>
   </div>
 

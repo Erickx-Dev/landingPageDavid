@@ -72,7 +72,7 @@
       );
 
       document
-        .querySelectorAll('.polaroid, .letter-card, .section__header, .memories__marquee')
+        .querySelectorAll('.polaroid, .envelope-stage, .section__header, .memories__marquee')
         .forEach((el) => this.observer.observe(el));
 
       const galleryGrid = document.getElementById('gallery-grid');
@@ -630,11 +630,129 @@
     },
   };
 
+  const LetterEnvelope = {
+    stage: null,
+    trigger: null,
+    modal: null,
+    closeBtn: null,
+    paperEl: null,
+    state: 'idle',
+    previousFocus: null,
+    openTimer: null,
+    closeTimer: null,
+    reducedMotion: false,
+
+    init() {
+      this.trigger = document.getElementById('envelope-trigger');
+      this.modal = document.getElementById('letter-modal');
+      if (!this.trigger || !this.modal) return;
+
+      this.stage = this.trigger.closest('.envelope-stage');
+      this.closeBtn = this.modal.querySelector('.letter-modal__close');
+      this.paperEl = this.modal.querySelector('.letter-modal__paper');
+
+      const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      this.reducedMotion = motionQuery.matches;
+      motionQuery.addEventListener?.('change', (e) => {
+        this.reducedMotion = e.matches;
+      });
+
+      this.bindEvents();
+    },
+
+    bindEvents() {
+      this.trigger.addEventListener('click', () => {
+        if (this.state === 'idle') {
+          this.open();
+        }
+      });
+
+      this.closeBtn?.addEventListener('click', () => this.close());
+
+      this.modal.addEventListener('click', (e) => {
+        if (e.target === this.modal) {
+          this.close();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && (this.state === 'open' || this.state === 'opening')) {
+          e.preventDefault();
+          this.close();
+        }
+      });
+    },
+
+    open() {
+      clearTimeout(this.openTimer);
+      clearTimeout(this.closeTimer);
+
+      this.state = 'opening';
+      this.previousFocus = document.activeElement;
+      this.trigger.setAttribute('aria-expanded', 'true');
+      this.stage?.classList.add('is-active');
+
+      if (this.reducedMotion) {
+        this.trigger.classList.add('is-open');
+        this.showModal();
+        return;
+      }
+
+      this.trigger.classList.remove('is-open');
+      this.trigger.classList.add('is-opening');
+
+      this.openTimer = setTimeout(() => {
+        if (this.state !== 'opening') return;
+        this.trigger.classList.remove('is-opening');
+        this.trigger.classList.add('is-open');
+        this.showModal();
+      }, 820);
+    },
+
+    showModal() {
+      this.state = 'open';
+      this.modal.removeAttribute('hidden');
+      if (this.paperEl) {
+        this.paperEl.scrollTop = 0;
+      }
+      document.body.style.overflow = 'hidden';
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          this.modal.classList.add('is-open');
+          setTimeout(() => this.closeBtn?.focus(), 120);
+        });
+      });
+    },
+
+    close() {
+      if (this.state === 'idle' || this.state === 'closing') return;
+
+      clearTimeout(this.openTimer);
+      clearTimeout(this.closeTimer);
+
+      this.state = 'closing';
+      this.modal.classList.remove('is-open');
+
+      const delay = this.reducedMotion ? 0 : 340;
+      this.closeTimer = setTimeout(() => {
+        this.modal.setAttribute('hidden', '');
+        document.body.style.overflow = '';
+        this.trigger.classList.remove('is-opening', 'is-open');
+        this.trigger.setAttribute('aria-expanded', 'false');
+        this.stage?.classList.remove('is-active');
+        this.state = 'idle';
+        this.previousFocus?.focus?.();
+      }, delay);
+    },
+  };
+
   document.addEventListener('DOMContentLoaded', () => {
     buildGallery();
     buildMemories();
     ScrollReveal.init();
     LightboxManager.init();
+    LetterEnvelope.init();
     MemoriesMarquee.init();
     StarParticles.init();
   });
